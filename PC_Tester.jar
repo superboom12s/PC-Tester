@@ -1,0 +1,64 @@
+import javax.swing.*;
+
+public class PC_Tester {
+    public static void main(String[] args) {
+        
+        JFrame jFrame = new JFrame();
+
+        final String MDC = "You are about to run \"PC Tester\"\n\nThis program may lag and overheat your computer\nwith the purpose of checking your PC speed.\n\n\nIf you want to continue, select a mode:\n1: Fast and light, but not very acurate.\n2: Heavier than the first mode, but more curate\n3: Very heavy and slow, but very acurate.\n\n\nIf you want to cancel, close this window or enter anything else.\n\nThis window will close when continuing,\nwait for the next one to open and\nthrowing result.\nYou can open your task manager with\nctrl + shift + esc to see whats your\nPC performance, it should be at 100%\nat nothing.";
+
+        String continuar = JOptionPane.showInputDialog(jFrame, MDC);
+
+        long tiempoInicio = System.currentTimeMillis();
+
+        if (continuar.equals("1")) {
+
+            for (int i = 0; i <= 30; i++) {
+                ciclo_suave(i);
+            }
+
+        } else if (continuar.equals("2")) {
+
+            for (int i = 0; i <= 500; i++) {
+                ciclo_suave(i);
+            }
+
+        } else if (continuar.equals("3")) {
+
+            for (int i = 0; i <= 5000; i++) {
+                ciclo_pesado(i);
+            }
+
+        }else{
+            System.out.println("Operation cancelled.");
+            JOptionPane.showMessageDialog(null, "Operation cancelled.");
+        }
+
+        if (continuar.equals("1")||continuar.equals("2")||continuar.equals("3")){
+
+            long tiempoFin = System.currentTimeMillis();
+
+            JOptionPane.showMessageDialog(null, "Test finished.\n\nCompleted in " + String.valueOf(tiempoFin - tiempoInicio) + " Miliseconds.\n(" + String.valueOf((tiempoFin - tiempoInicio) / 1000) + " seconds)");
+        }
+    }
+
+
+
+    public static void ciclo_suave(int loopVal){
+
+        String[] lagstring = new String[99999999];
+
+        String actualLag = String.valueOf(Math.sqrt(Math.sqrt(Math.floor(Math.random() * 1000000000))));
+        lagstring[loopVal] = actualLag;
+
+    }
+
+    public static void ciclo_pesado(int loopVal){
+
+        String[] lagstring = new String[99999999];
+
+        String actualLag = String.valueOf(Math.sqrt(Math.sqrt(Math.floor(Math.random() * 1000000000)))/Math.sqrt(Math.sqrt(Math.floor(Math.random() * 1000000000))));
+        lagstring[loopVal] = actualLag;
+
+    }
+}
