@@ -1,4 +1,4 @@
-# PC-Tester 1.0.0
+# PC-Tester 1.2.0
 A program to test your PC performance.
 
 Just run PC_Tester.jar.
